@@ -1,6 +1,6 @@
 name: just_ui
 description: "A lightweight and utilitarian UI package for Flutter, focused on business applications."
-version: 0.0.1-alpha.1
+version: 0.0.1-alpha.2
 homepage: https://github.com/playbott/flutter_just_ui
 
 environment:

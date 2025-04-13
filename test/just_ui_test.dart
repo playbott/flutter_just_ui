@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 void main() {
   testWidgets('JustTextField shows label', (tester) async {
     await tester.pumpWidget(
-      const MaterialApp(home: Scaffold(body: JustTextField(label: 'JustTextField widget test'))),
+      const MaterialApp(
+        home: Scaffold(body: JustTextField(label: 'JustTextField widget test')),
+      ),
     );
     expect(find.text('JustTextField widget test'), findsOneWidget);
   });

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// A simple text field with optional label and hint.
 class JustTextField extends StatelessWidget {
   final String? label;
   final String? hint;

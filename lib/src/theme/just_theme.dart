@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_ui/just_ui.dart';
 
+/// A simple theme with a light mode.
 class JustTheme {
   static ThemeData light() {
     return ThemeData(
@@ -13,7 +14,9 @@ class JustTheme {
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(JustUiConstants.defaultBorderRadius),
+            borderRadius: BorderRadius.circular(
+              JustUiConstants.defaultBorderRadius,
+            ),
           ),
         ),
       ),

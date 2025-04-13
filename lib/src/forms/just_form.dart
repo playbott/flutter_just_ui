@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// A simple form with a submit button.
 class JustForm extends StatefulWidget {
   final List<Widget> fields;
   final void Function(Map<String, dynamic>) onSubmit;

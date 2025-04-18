@@ -2,7 +2,7 @@
 
 A lightweight and utilitarian UI package for Flutter, focused on business applications.
 
-⚠️ This package is in early alpha and not ready for production use.The API is unstable and subject to change.
+⚠️ This package is in early alpha and not ready for production use. The API is unstable and subject to change.
 Please avoid using `just_ui` in real applications until a stable release is available.
 
 ## Installation

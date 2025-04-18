@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:just_ui/just_ui.dart';
+import 'package:just_ui/src/utils/constants.dart';
 
 /// A simple theme with a light mode.
 class JustTheme {

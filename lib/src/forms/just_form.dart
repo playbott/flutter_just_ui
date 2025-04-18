@@ -1,43 +1,45 @@
 import 'package:flutter/material.dart';
+import 'just_form_controller.dart';
 
-/// A simple form with a submit button.
-class JustForm extends StatefulWidget {
-  final List<Widget> fields;
-  final void Function(Map<String, dynamic>) onSubmit;
-  final String submitButtonText;
+/// Internal InheritedWidget for providing JustFormController
+/// to child widgets (form fields).
+class _JustFormScope extends InheritedWidget {
+  final JustFormController controller;
 
-  const JustForm({
-    super.key,
-    required this.fields,
-    required this.onSubmit,
-    this.submitButtonText = 'Submit',
-  });
+  const _JustFormScope({required this.controller, required super.child});
 
   @override
-  JustFormState createState() => JustFormState();
+  bool updateShouldNotify(_JustFormScope oldWidget) {
+    return controller != oldWidget.controller;
+  }
 }
 
-class JustFormState extends State<JustForm> {
-  final _formKey = GlobalKey<FormState>();
+/// Widget container for form, controlled by [JustFormController].
+/// Provides the controller to child widgets via InheritedWidget.
+class JustForm extends StatefulWidget {
+  const JustForm({super.key, required this.controller, required this.child});
+
+  /// The controller for JustForm.
+  final JustFormController controller;
+
+  /// The widget below this widget in the tree. [JustForm] finds child widgets
+  /// contains JustFormFields and passes them the controller.
+  final Widget child;
+
+  /// Returns the [JustFormController] of the closest [JustForm] widget
+  /// which encloses the given context.
+  static JustFormController? maybeControllerOf(BuildContext context) {
+    final scope = context.dependOnInheritedWidgetOfExactType<_JustFormScope>();
+    return scope?.controller;
+  }
 
   @override
+  State<JustForm> createState() => _JustFormState();
+}
+
+class _JustFormState extends State<JustForm> {
+  @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          ...widget.fields,
-          const SizedBox(height: 16.0),
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                widget.onSubmit({});
-              }
-            },
-            child: Text(widget.submitButtonText),
-          ),
-        ],
-      ),
-    );
+    return _JustFormScope(controller: widget.controller, child: widget.child);
   }
 }
